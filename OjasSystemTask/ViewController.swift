@@ -11,11 +11,13 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
     
+    @IBOutlet weak var countlLbl: UIBarButtonItem!
     @IBOutlet weak var tableVwDetails: UITableView!
     var dictDetails = NSDictionary()
     var dictMeta = NSDictionary()
     var dictView = NSDictionary()
     var aryColumns = NSArray()
+    var strCount:NSInteger =  0
     private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -131,12 +133,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                    // sender.tag = 1
                     print("on")
                     cell?.layer.backgroundColor = UIColor.red.cgColor
+                    strCount = strCount + 1
+                    countlLbl.title = String(strCount)
 
                 }
                 else{
                    // sender.tag = 0
                     print("off")
+                    strCount = strCount - 1
                     cell?.layer.backgroundColor = UIColor.white.cgColor
+                    countlLbl.title = String(strCount)
                 }
     
     }
